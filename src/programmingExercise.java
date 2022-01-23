@@ -3,8 +3,7 @@ import java.util.Scanner;
 public class programmingExercise {
 
 	public static void main(String[] args) {
-		
-		//Declaring Prices 
+
 		int adultPrice = 25;
 		int studentPrice = 15;
 		int oapPrice = 10;
@@ -12,9 +11,9 @@ public class programmingExercise {
 		double totalCost = 0;
 		int freeChildDivisor = 2;
 		int halfPriceDivisor = 2;
+		String[] coupons = {"CHOCO-563-GS-3829"};
 		
 		System.out.println("Welcome to the theme park!");
-		System.out.println("");
 		
 		// Input of number of tickets
 	    Scanner ticket = new Scanner(System.in);
@@ -32,7 +31,11 @@ public class programmingExercise {
 	    
 	    // Calculation to check for 2 for 1 offer for child tickets
 	    int freeChildTickets = adultTicketAmount / freeChildDivisor;
-	    if (freeChildTickets >= 1)
+	    if (childTicketAmount <=0)
+	    {
+	    	totalCost += (childTicketAmount ) * childPrice;
+	    }
+	    else if (freeChildTickets >=1)
 	    {
 	    	totalCost += (childTicketAmount - freeChildTickets) * childPrice;
 	    }
@@ -53,13 +56,33 @@ public class programmingExercise {
 	    }
 	    
 	    // Output of number of tickets 
+	    System.out.println("");
 	    System.out.println("Number of adult tickets bought: " + adultTicketAmount);
 	    System.out.println("Number of student tickets bought: " + studentTicketAmount);
 	    System.out.println("Number of OAP tickets bought: " + oapTicketAmount);
-	    System.out.println("Number of child tickets bought: " + (childTicketAmount) );
-	    System.out.println("The number of free child tickets is: " + (freeChildTickets  - freeChildTickets));
+	    if (childTicketAmount <= 0)
+	    {
+	    	System.out.println("Number of child tickets bought: " + (childTicketAmount) );
+	  	    System.out.println("The number of free child tickets: " + (freeChildTickets));
+	    }
+	    else { 
+	    	System.out.println("Number of child tickets bought: " + (childTicketAmount - freeChildTickets) );
+		  	System.out.println("The number of free child tickets: " + (freeChildTickets));
+		}
 	    
-	    
+	    /* Boolean to check if customer has coupon or not
+	   	Under Construction 
+	    System.out.println("Do you have a coupon?"); 
+	    boolean 
+	    if (condition1 Part 1) {
+	    	  //  block of code to be executed if condition1 is true
+	    	   *  if (condition1 Part 2) {
+	    	  //  block of code to be executed if condition1 is true
+	    	} else if (condition2) {
+	    	  //  block of code to be executed if the condition1 is false and condition2 is true
+	    	} else {
+	    	  //  block of code to be executed if the condition1 is false and condition2 is false
+	    	} */
 	    
 	    // Final Output
 	    System.out.println("Total cost of tickets is £" + totalCost);
